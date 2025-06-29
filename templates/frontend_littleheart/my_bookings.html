@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!-- My Bookings Page -->
+<section class="py-3 bg-gradient-light" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+  <div class="container">
+    <h1 class="text-center fw-bold text-primary mb-4 pb-2 border-bottom border-primary border-2" style="font-family: 'Poppins', sans-serif; letter-spacing: 0.5px; font-size: 2.25rem;">
+      {{ user.username }}, Your Bookings
+    </h1>
+    {% if bookings %}
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" id="bookingGrid">
+        {% for booking in bookings %}
+          <div class="col">
+            <div class="card border-0 shadow-sm rounded-3 booking-card position-relative overflow-hidden" data-bs-toggle="modal" data-bs-target="#bookingModal{{ booking.id }}">
+              <div class="card-body p-3 text-center transition-all duration-300">
+                <h5 class="card-title fw-bold text-danger mb-2" style="font-size: 1.1rem;">Booking #{{ booking.id }}</h5>
+                <div class="d-flex justify-content-center align-items-center mb-1">
+                  <strong class="text-dark me-2">Status:</strong>
+                  <span class="badge rounded-pill {% if booking.status == 'pending' %}bg-warning{% elif booking.status == 'approved' %}bg-success{% elif booking.status == 'canceled' %}bg-danger{% endif %} text-white px-2 py-1">
+                    {{ booking.status|title }}
+                  </span>
+                </div>
+                <p class="mb-1 text-muted small"><strong>Date:</strong> {{ booking.date_time|date:'M d, Y' }}</p>
+                <p class="mb-1 text-muted small"><strong>Time:</strong> {{ booking.date_time|date:'h:i A' }}</p>
+                <p class="mb-0"><strong class="text-dark">Total:</strong> <span class="text-success fw-medium">Rs. {{ booking.total_price }}</span></p>
+                {% comment %} <div class="position-absolute top-0 end-0 p-2">
+                  <span class="badge bg-secondary bg-opacity-75 text-white small rounded-circle">New</span>
+                </div> {% endcomment %}
+              </div>
+            </div>
+          </div>
+          <!-- Modal for Booking Details -->
+          <div class="modal fade" id="bookingModal{{ booking.id }}" tabindex="-1" aria-labelledby="bookingModalLabel{{ booking.id }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+              <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header bg-primary text-white">
+                  <h5 class="modal-title" id="bookingModalLabel{{ booking.id }}" style="font-family: 'Poppins', sans-serif;">Booking #{{ booking.id }} Details</h5>
+                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                  <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                      <p class="mb-2"><strong class="text-dark">Customer:</strong> <span class="text-muted">{{ booking.full_name }}</span></p>
+                      <p class="mb-2"><strong class="text-dark">Contact No:</strong> <span class="text-muted">{{ booking.contact_no }}</span></p>
+                      <p class="mb-2"><strong class="text-dark">Email:</strong> <span class="text-muted">{{ booking.email }}</span></p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <p class="mb-2"><strong class="text-dark">Total Price:</strong> <span class="text-success fw-medium">Rs. {{ booking.total_price }}</span></p>
+                      <p class="mb-2"><strong class="text-dark">Status:</strong> 
+                        <span class="badge rounded-pill {% if booking.status == 'pending' %}bg-warning{% elif booking.status == 'approved' %}bg-success{% elif booking.status == 'canceled' %}bg-danger{% endif %} text-white px-2 py-1">
+                          {{ booking.status|title }}
+                        </span>
+                      </p>
+                      <p class="mb-2"><strong class="text-dark">Date & Time:</strong> <span class="text-muted">{{ booking.date_time|date:'F d, Y h:i A' }}</span></p>
+                    </div>
+                  </div>
+                  <hr class="my-3">
+                  <h6 class="fw-bold text-danger mb-2" style="font-size: 1.1rem;">Pet Details</h6>
+                  {% if booking.pets %}
+                    <div class="row row-cols-1 row-cols-md-2 g-2">
+                      {% for pet in booking.pets %}
+                        <div class="col">
+                          <div class="p-2 border rounded-2">
+                            <p><strong>Pet Name:</strong> {{ pet.name }}</p>
+                            <p><strong>Age:</strong> {{ pet.age }}</p>
+                            <p><strong>Weight:</strong> {{ pet.weight }} kg</p>
+                            <p><strong>Note:</strong> {{ pet.note|default:'None' }}</p>
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% else %}
+                    <p class="text-muted">No pets recorded.</p>
+                  {% endif %}
+                  <hr class="my-3">
+                  <h6 class="fw-bold text-danger mb-2" style="font-size: 1.1rem;">Service Details</h6>
+                  <p><strong>Service Type:</strong> {{ booking.service_type|title }}</p>
+                  <p><strong>Add-ons:</strong> {% if booking.add_ons %}{{ booking.add_ons|join:", "|title }}{% else %}None{% endif %}</p>
+                  {% if is_staff %}
+                    <hr class="my-3">
+                    <form method="post" action="{% url 'update_booking_status' %}" class="mt-2 needs-validation" novalidate>
+                      {% csrf_token %}
+                      <input type="hidden" name="booking_id" value="{{ booking.id }}">
+                      <div class="mb-3">
+                        <label for="status_{{ booking.id }}" class="form-label fw-bold text-dark small">Update Status:</label>
+                        <select name="status" id="status_{{ booking.id }}" class="form-select form-select-sm" required>
+                          <option value="pending" {% if booking.status == 'pending' %}selected{% endif %}>Pending</option>
+                          <option value="approved" {% if booking.status == 'approved' %}selected{% endif %}>Approved</option>
+                          <option value="canceled" {% if booking.status == 'canceled' %}selected{% endif %}>Canceled</option>
+                        </select>
+                        <div class="invalid-feedback">Please select a status.</div>
+                      </div>
+                      <button type="submit" class="btn btn-primary btn-sm position-relative">
+                        Update
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success d-none" id="statusUpdateSuccess{{ booking.id }}" style="font-size: 0.6rem;">✓</span>
+                      </button>
+                    </form>
+                  {% endif %}
+                </div>
+                {% comment %} <div class="modal-footer bg-light">
+                  <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                </div> {% endcomment %}
+              </div>
+            </div>
+          </div>
+        {% empty %}
+          <div class="col-12">
+            <p class="text-center text-muted py-3">No bookings found.</p>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="col-12">
+        <p class="text-center text-muted py-3">No bookings found.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock content %}
+
+<style>
+  /* Custom CSS for Premium UI */
+  .bg-gradient-light { min-height: 100vh; }
+  .booking-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #ffffff;
+  }
+  .booking-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  .badge.rounded-pill { font-weight: 500; }
+  .bg-warning { background-color: #ffca28 !important; }
+  .bg-success { background-color: #2e7d32 !important; }
+  .bg-danger { background-color: #d32f2f !important; }
+  .modal-content { border-radius: 0.75rem; }
+  .modal-header { border-bottom: none; border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; }
+  .modal-footer { border-top: none; }
+  .form-select-sm { padding: 0.25rem 0.5rem; }
+  .needs-validation .form-select:invalid { border-color: #dc3545; }
+  .needs-validation .form-select:valid { border-color: #28a745; }
+  @media (max-width: 992px) {
+    .row-cols-lg-3 { row-cols-2 !important; }
+    .card-body { padding: 1.25rem; }
+    .modal-dialog { max-width: 80%; }
+  }
+  @media (max-width: 768px) {
+    .row-cols-md-2 { row-cols-1 !important; }
+    .card-body { padding: 1rem; }
+    h1 { font-size: 1.75rem; }
+    .card-title { font-size: 1rem; }
+    .badge { font-size: 0.65em; padding: 0.2em 0.6em; }
+    .modal-dialog { max-width: 90%; }
+  }
+  @media (max-width: 576px) {
+    h1 { font-size: 1.5rem; }
+    .card-title { font-size: 0.9rem; }
+    .form-select-sm { font-size: 0.75rem; }
+    .btn-sm { padding: 0.2rem 0.4rem; font-size: 0.7rem; }
+    .modal-dialog { max-width: 95%; }
+  }
+</style>
+
+<script>
+  // Custom JavaScript for Enhanced UX
+  document.addEventListener('DOMContentLoaded', function () {
+    // Form Validation and Success Feedback
+    const forms = document.querySelectorAll('.needs-validation');
+    forms.forEach(form => {
+      form.addEventListener('submit', function (event) {
+        const select = form.querySelector('select');
+        if (!select.value) {
+          event.preventDefault();
+          event.stopPropagation();
+          select.classList.add('is-invalid');
+        } else {
+          select.classList.remove('is-invalid');
+          select.classList.add('is-valid');
+          const successBadge = document.getElementById(`statusUpdateSuccess${select.id.split('_')[1]}`);
+          successBadge.classList.remove('d-none');
+          setTimeout(() => successBadge.classList.add('d-none'), 2000); // Hide after 2 seconds
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+
+    // Smooth Scroll to Top on Load
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>

@@ -1,0 +1,936 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<!-- Regular Bath Page -->
+<section class="text-center text-white d-flex align-items-center" 
+         style="background: url('/static/images/REGULAR-1.png') no-repeat center center/cover; min-height: 700px; position: relative; overflow: hidden;">
+  <div class="container py-5">
+    <h1 class="display-3 fw-bold" style="color: #e75b1e; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+      Regular <br>
+      <span class="fs-2" style="color: #e75b1e;">Bath</span>
+    </h1>
+  </div>
+</section>
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-8">
+        <h2 class="fw-bold text-danger">Regular Bath</h2>
+        <div class="d-flex align-items-start gap-3 mb-3">
+          <img src="{% static 'images/REGULAR-2.png' %}" alt="Thumb" class="rounded" width="120">
+          <div>
+            <h6 class="text-danger fw-bold mb-0">Best For All Kinds Of Dogs & Cats</h6>
+            <p class="text-muted small mb-0">
+              Giving your pet regular baths is important for their overall cleanliness and well-being. It helps get rid of dirt, keeps their fur looking healthy, and removes unpleasant smells.
+            </p>
+            <p class="text-muted small">
+              Frequent bathing is especially beneficial for pets that spend a lot of time outdoors or tend to get dirty often.
+            </p>
+            <p class="text-muted small">
+              Our grooming services include: double bathing, conditioning, towel and dryer blow-drying, thorough combing and brushing, hygiene care, trimming and tidying of hair, nail clipping, paw pad trimming, ear and eye cleaning, and a refreshing cologne spray.
+            </p>
+          </div>
+        </div>
+
+        <h5 class="text-center text-danger mt-5 fw-bold">SIZE REFERENCE CHART BY BREED</h5>
+        <div class="row text-center mt-4 g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow rounded-4">
+              <div class="card-body">
+                <h5 class="fw-bold text-danger">Small</h5>
+                <p class="text-muted">1 to 11 Kg</p>
+                <small class="text-muted d-block">Chihuahua, Japanese Spitz, Maltese, Papillon, Pomeranian, Poodle, Yorkshire Terrier, Basenji, Beagle, Bichon Frise, Corgi, Dachshund, French Bulldog, Miniature Pinscher</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow rounded-4">
+              <div class="card-body">
+                <h5 class="fw-bold text-danger">Medium</h5>
+                <p class="text-muted">12 to 19 Kg</p>
+                <small class="text-muted d-block">Japanese Spitz, Border Collie, Brittany, Bull Dog, Bull Terrier, Chow Chow, Cocker Spaniel, Dalmatian, Siberian Husky, White Breed Pitbull, Apso, Poodle Standard</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow rounded-4">
+              <div class="card-body">
+                <h5 class="fw-bold text-danger">Large</h5>
+                <p class="text-muted">20 to 30 Kg</p>
+                <small class="text-muted d-block">Afghan Hound, Boxer, Doberman, Siberian Husky, German Shepherd, Golden Retriever, Greyhound, Labrador Retriever, Rottweiler, Himalayan Mastiff, Dalmatian</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm border-0 rounded-4 p-4">
+          <img src="{% static 'images/REGULAR-3.png' %}" alt="Service" class="rounded mb-4 w-100">
+          <div class="text-muted small mb-3">
+            <p><strong class="text-danger">💲 Price:</strong><br>Rs. 500-3500 (based on size and service)</p>
+            <p><strong class="text-danger">🐾 Pets Size:</strong><br>XS / S / M / L</p>
+            <p><strong class="text-danger">👤 Service By:</strong><br>Little Heart Pet’s Staff</p>
+            <p><strong class="text-danger">⏱ Duration:</strong><br>45 min - 3.5 hr (based on size)</p>
+            <p><strong class="text-danger">🩺 Suitable For:</strong><br>All Kinds of Dogs & Cats</p>
+            <p><strong class="text-danger">🕒 Working Hours:</strong><br>9 AM TO 4 PM (Sun - Fri)</p>
+            <p><strong class="text-danger">💳 Payment Method:</strong><br>Cash or Online</p>
+            <p><strong class="text-danger">📞 Contact No:</strong><br>+977 9800000000</p>
+          </div>
+          <a href="#" class="btn btn-outline-danger w-100 book-now-btn">Book Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Modal -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content border-0 shadow-lg rounded-4" style="background: #fff; overflow-y: auto; max-height: 90vh;">
+      <div class="modal-header bg-gradient-primary text-white rounded-top-4">
+        <h5 class="modal-title" id="bookingModalLabel" style="font-family: 'Poppins', sans-serif; font-size: 1.5rem;">Book Your Pet Grooming</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-4">
+        <div class="progress mb-4" style="height: 6px;">
+          <div class="progress-bar bg-primary" id="progressBar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="step-indicators mb-4 d-flex justify-content-between">
+          <span class="step-indicator">1. Customer</span>
+          <span class="step-indicator">2. Pet</span>
+          <span class="step-indicator">3. Booking</span>
+          <span class="step-indicator">4. Confirmation</span>
+        </div>
+        <form id="bookingForm" class="needs-validation" novalidate>
+          <div id="step1" class="step active">
+            <h4 class="fw-bold text-primary mb-3">Customer Details</h4>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="fullName" name="full_name" placeholder="Full Name" required>
+                  <label for="fullName">Full Name <span class="text-danger">*</span></label>
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="tel" class="form-control" id="contactNo" name="contact_no" placeholder="+977XXXXXXXXXX" pattern="^\+977[0-9]{10}$" required>
+                  <label for="contactNo">Contact No (e.g., +977XXXXXXXXXX) <span class="text-danger">*</span></label>
+                  <div class="invalid-feedback">Please enter a valid contact number starting with +977 followed by 10 digits.</div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" id="nextStep1">Next <i class="bi bi-arrow-right"></i></button>
+          </div>
+
+          <div id="step2" class="step">
+            <h4 class="fw-bold text-primary mb-3">Pet Information</h4>
+            <div id="petContainer">
+              <div class="pet-info mb-3 p-3 border rounded-3">
+                <div class="row g-2">
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="petName1" name="petName1" placeholder="Pet Name">
+                      <label for="petName1">Pet Name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="petAge1" name="petAge1" placeholder="Age" min="0">
+                      <label for="petAge1">Age</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="number" class="form-control" id="petWeight1" name="petWeight1" placeholder="Weight" step="0.1" required>
+                      <label for="petWeight1">Weight (kg) <span class="text-danger">*</span></label>
+                      <div class="invalid-feedback">Please enter pet weight.</div>
+                      <small id="weightAlert1" class="text-danger d-none mt-1">Weight above 30kg requires salon confirmation.</small>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <textarea class="form-control" id="petNote1" name="petNote1" placeholder="Note" style="height: 80px;"></textarea>
+                      <label for="petNote1">Note (Medical Condition, Behavior)</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="btn btn-outline-secondary mb-3" id="addPet">Add Another Pet <i class="bi bi-plus-lg"></i></button>
+            <button type="button" class="btn btn-primary" id="nextStep2">Next <i class="bi bi-arrow-right"></i></button>
+            <button type="button" class="btn btn-outline-secondary" id="prevStep2">Previous <i class="bi bi-arrow-left"></i></button>
+          </div>
+
+          <!-- Step 3: Date, Time, and Service Selection -->
+          <div class="step" id="step3" style="display: none;">
+            <h4 class="fw-bold text-primary mb-3">Step 3: Booking Details</h4>
+            <div class="row g-3">
+              <div class="col-12">
+                <div class="form-floating">
+                  <select class="form-select" id="serviceType" name="serviceType" required>
+                    <option value="">Select Service</option>
+                    <option value="washDry">Wash and Dry</option>
+                    <option value="washTidy">Wash and Tidy</option>
+                    <option value="fullGroom">Full Groom</option>
+                    <option value="puppy">Puppy</option>
+                  </select>
+                  <label for="serviceType">Service Type <span class="text-danger">*</span></label>
+                  <div class="invalid-feedback">Please select a service.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="add-ons-container">
+                  <h6>Add-ons (Optional)</h6>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="deshedding" name="add_ons" value="deshedding">
+                    <label class="form-check-label" for="deshedding">Deshedding (15 min, Rs 200)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="specialShampoo" name="add_ons" value="specialShampoo">
+                    <label class="form-check-label" for="specialShampoo">Special Shampoo (Rs 200)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="nailClip" name="add_ons" value="nailClip">
+                    <label class="form-check-label" for="nailClip">Nail Clip (Rs 200)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="analGland" name="add_ons" value="analGland">
+                    <label class="form-check-label" for="analGland">Anal Gland Care (Rs 200)</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="teethBrushing" name="add_ons" value="teethBrushing">
+                    <label class="form-check-label" for="teethBrushing">Teeth Brushing (Rs 200)</label>
+                  </div>
+                  <small class="text-warning mt-2">Note: Flea shampoo + rinse will be applied if fleas are found during grooming to prevent spreading.</small>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <input type="date" class="form-control" id="bookingDate" name="date" required>
+                  <label for="bookingDate">Select Date <span class="text-danger">*</span></label>
+                  <div class="invalid-feedback">Please select a date.</div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-floating">
+                  <select class="form-select" id="bookingTime" name="time" required>
+                    <option value="">Select Time</option>
+                  </select>
+                  <label for="bookingTime">Select Time <span class="text-danger">*</span></label>
+                  <div class="invalid-feedback">Please select a valid time.</div>
+                </div>
+                <div id="durationPriceInfo" class="mt-2 text-muted"></div>
+              </div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-6">
+                <button type="button" class="btn btn-secondary w-100" id="prevStep3">Previous</button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-success w-100" id="nextStep3">Next</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Confirmation -->
+          <div class="step" id="step4" style="display: none;">
+            <h4 class="text-center mb-4">Step 4: Confirm Booking</h4>
+            <div id="confirmationDetails" class="mb-4"></div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="terms" required>
+              <label class="form-check-label" for="terms">I agree to the terms and conditions <span class="text-danger">*</span></label>
+              <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+            </div>
+            <div class="row mt-4">
+              <div class="col-6">
+                <button type="button" class="btn btn-secondary w-100" id="prevStep4">Previous</button>
+              </div>
+              <div class="col-6">
+                <button type="submit" class="btn btn-success w-100" id="nextStep4" form="bookingForm">Confirm Booking</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer bg-light rounded-bottom-4">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- JavaScript for Booking Form -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const modal = new bootstrap.Modal(document.getElementById('bookingModal'));
+    let petCount = 1;
+    let step = 1;
+    const confirmButton = document.getElementById('nextStep4');
+
+    // Check login status before showing modal
+    document.querySelector('.book-now-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      fetch('/get-user-profile/', {
+        method: 'GET',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          modal.show();
+          initializeModal();
+        } else {
+          window.location.href = '/login/?next=/regular_bathing/';
+        }
+      })
+      .catch(error => {
+        console.error('Error checking login status:', error);
+        window.location.href = '/login/?next=/regular_bathing/';
+      });
+    });
+
+    function initializeModal() {
+      step = 1;
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step1').classList.add('active');
+      updateProgress(25);
+      document.querySelectorAll('.step').forEach(step => step.style.display = 'none');
+      document.querySelector('.step.active').style.display = 'block';
+      const today = new Date().toISOString().slice(0, 10);
+      const oneMonthLater = new Date(new Date().setMonth(new Date().getMonth() + 1)).toISOString().slice(0, 10);
+      document.getElementById('bookingDate').setAttribute('min', today);
+      document.getElementById('bookingDate').setAttribute('max', oneMonthLater);
+      document.getElementById('bookingForm').classList.remove('was-validated');
+      resetForm();
+      updateAddOnsVisibility();
+      loadTimeSlots(today);
+
+      fetch('/get-user-profile/', {
+        method: 'GET',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}',
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById('fullName').value = data.full_name || '';
+          document.getElementById('contactNo').value = data.contact_no ? `${data.contact_no}` : '';
+        }
+      })
+      .catch(error => console.error('Error fetching user profile:', error));
+    }
+
+    function updateProgress(percentage) {
+      const progressBar = document.getElementById('progressBar');
+      progressBar.style.width = `${percentage}%`;
+      progressBar.setAttribute('aria-valuenow', percentage);
+      document.querySelectorAll('.step-indicator').forEach((indicator, index) => {
+        indicator.classList.toggle('active', index < step);
+      });
+    }
+
+    function resetForm() {
+      document.getElementById('bookingForm').reset();
+      document.getElementById('petContainer').innerHTML = `
+        <div class="pet-info mb-3 p-3 border rounded-3">
+          <div class="row g-2">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="petName1" name="petName1" placeholder="Pet Name">
+                <label for="petName1">Pet Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="petAge1" name="petAge1" placeholder="Age" min="0">
+                <label for="petAge1">Age</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="number" class="form-control" id="petWeight1" name="petWeight1" placeholder="Weight" step="0.1" required>
+                <label for="petWeight1">Weight (kg) <span class="text-danger">*</span></label>
+                <div class="invalid-feedback">Please enter pet weight.</div>
+                <small id="weightAlert1" class="text-danger d-none mt-1">Weight above 30kg requires salon confirmation.</small>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <textarea class="form-control" id="petNote1" name="petNote1" placeholder="Note" style="height: 80px;"></textarea>
+                <label for="petNote1">Note (Medical Condition, Behavior)</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      petCount = 1;
+      document.querySelectorAll('.step-indicator').forEach(indicator => indicator.classList.remove('active'));
+      document.getElementById('durationPriceInfo').textContent = '';
+      updateAddOnsVisibility();
+    }
+
+    // Step Navigation
+    document.getElementById('nextStep1').addEventListener('click', function () {
+      if (validateStep1()) {
+        step = 2;
+        document.getElementById('step1').classList.remove('active');
+        document.getElementById('step2').classList.add('active');
+        transitionSteps();
+      } else {
+        document.getElementById('bookingForm').classList.add('was-validated');
+      }
+    });
+
+    document.getElementById('nextStep2').addEventListener('click', function () {
+      if (validateStep2()) {
+        step = 3;
+        document.getElementById('step2').classList.remove('active');
+        document.getElementById('step3').classList.add('active');
+        transitionSteps();
+        updateServiceDurationAndPrice();
+      } else {
+        for (let i = 1; i <= petCount; i++) {
+          if (!document.getElementById(`petWeight${i}`).value) {
+            document.getElementById(`petWeight${i}`).classList.add('is-invalid');
+          }
+        }
+      }
+    });
+
+    document.getElementById('nextStep3').addEventListener('click', function () {
+      if (validateStep3()) {
+        step = 4;
+        document.getElementById('step3').classList.remove('active');
+        document.getElementById('step4').classList.add('active');
+        displayConfirmation();
+        checkTimeAvailability();
+        transitionSteps();
+      } else {
+        document.getElementById('bookingForm').classList.add('was-validated');
+        const invalidFields = document.getElementById('bookingForm').querySelectorAll(':invalid');
+        invalidFields.forEach(field => console.log(`Invalid field: ${field.id}`));
+      }
+    });
+
+    document.getElementById('prevStep2').addEventListener('click', function () {
+      step = 1;
+      document.getElementById('step2').classList.remove('active');
+      document.getElementById('step1').classList.add('active');
+      transitionSteps();
+      updateProgress(25);
+    });
+
+    document.getElementById('prevStep3').addEventListener('click', function () {
+      step = 2;
+      document.getElementById('step3').classList.remove('active');
+      document.getElementById('step2').classList.add('active');
+      transitionSteps();
+      updateProgress(50);
+    });
+
+    document.getElementById('prevStep4').addEventListener('click', function () {
+      step = 3;
+      document.getElementById('step4').classList.remove('active');
+      document.getElementById('step3').classList.add('active');
+      transitionSteps();
+      updateProgress(75);
+    });
+
+    function transitionSteps() {
+      document.querySelectorAll('.step').forEach(step => step.style.display = 'none');
+      document.querySelector('.step.active').style.display = 'block';
+      updateProgress(step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100);
+    }
+
+    // Add Another Pet
+    document.getElementById('addPet').addEventListener('click', function () {
+      petCount++;
+      const petDiv = document.createElement('div');
+      petDiv.className = 'pet-info mb-3 p-3 border rounded-3';
+      petDiv.innerHTML = `
+        <div class="row g-2">
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="text" class="form-control" id="petName${petCount}" name="petName${petCount}" placeholder="Pet Name">
+              <label for="petName${petCount}">Pet Name</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="petAge${petCount}" name="petAge${petCount}" placeholder="Age" min="0">
+              <label for="petAge${petCount}">Age</label>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <input type="number" class="form-control" id="petWeight${petCount}" name="petWeight${petCount}" placeholder="Weight" step="0.1" required>
+              <label for="petWeight${petCount}">Weight (kg) <span class="text-danger">*</span></label>
+              <div class="invalid-feedback">Please enter pet weight.</div>
+              <small id="weightAlert${petCount}" class="text-danger d-none mt-1">Weight above 30kg requires salon confirmation.</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-floating">
+              <textarea class="form-control" id="petNote${petCount}" name="petNote${petCount}" placeholder="Note" style="height: 80px;"></textarea>
+              <label for="petNote${petCount}">Note (Medical Condition, Behavior)</label>
+            </div>
+          </div>
+        </div>
+      `;
+      document.getElementById('petContainer').appendChild(petDiv);
+      document.getElementById(`petWeight${petCount}`).addEventListener('input', checkWeight);
+    });
+
+    // Weight Check
+    function checkWeight(event) {
+      const weight = parseFloat(event.target.value);
+      const alertId = `weightAlert${event.target.id.replace('petWeight', '')}`;
+      const alert = document.getElementById(alertId);
+      const serviceType = document.getElementById('serviceType');
+      const bookingTime = document.getElementById('bookingTime');
+      if (weight > 30) {
+        alert.classList.remove('d-none');
+        serviceType.disabled = true;
+        bookingTime.disabled = true;
+      } else {
+        alert.classList.add('d-none');
+        serviceType.disabled = false;
+        bookingTime.disabled = false;
+      }
+      updateServiceDurationAndPrice();
+    }
+
+    // Update Service Duration and Price
+    function updateServiceDurationAndPrice() {
+      const weight = parseFloat(document.getElementById(`petWeight1`).value) || 0;
+      const size = weight < 5 ? 'XS' : weight <= 11 ? 'S' : weight <= 19 ? 'M' : weight <= 30 ? 'L' : 'Special';
+      const durations = {
+        washDry: { 'XS': '45 min', 'S': '1 hr', 'M': '1.5 hr', 'L': '2 hr' },
+        washTidy: { 'XS': '45 min', 'S': '1.25 hr', 'M': '1.5 hr', 'L': '2 hr' },
+        fullGroom: { 'XS': '1.5 hr', 'S': '2 hr', 'M': '2.5 hr', 'L': '3.5 hr' },
+        puppy: { 'XS': '1.5 hr', 'S': '1.5 hr', 'M': '1.5 hr', 'L': '1.5 hr' }
+      };
+      const basePrices = {
+        washDry: { 'XS': 500, 'S': 1000, 'M': 1500, 'L': 2000 },
+        washTidy: { 'XS': 500, 'S': 1000, 'M': 1500, 'L': 2000 },
+        fullGroom: { 'XS': 1500, 'S': 2000, 'M': 2500, 'L': 3500 },
+        puppy: { 'XS': 1500, 'S': 1500, 'M': 1500, 'L': 1500 }
+      };
+      const addOnPrices = { deshedding: 200, specialShampoo: 200, nailClip: 200, analGland: 200, teethBrushing: 200 };
+      const service = document.getElementById('serviceType').value || 'washDry';
+      let totalPrice = basePrices[service][size] || 0;
+      let addOns = document.querySelectorAll('input[name="add_ons"]:checked');
+      addOns.forEach(addOn => totalPrice += addOnPrices[addOn.value] || 0);
+      let duration = durations[service][size] || 'N/A';
+      if (document.getElementById('deshedding').checked) {
+        const [time, unit] = duration.split(' ');
+        let minutes = unit === 'min' ? parseInt(time) : parseInt(time) * 60 + 15;
+        duration = `${Math.floor(minutes / 60) > 0 ? Math.floor(minutes / 60) + ' hr' : ''} ${minutes % 60} min`.trim();
+      }
+      if (size === 'Special') {
+        document.getElementById('durationPriceInfo').innerHTML = 'Please contact the salon for weights above 30kg.';
+        document.getElementById('serviceType').disabled = true;
+        document.getElementById('bookingTime').disabled = true;
+      } else {
+        document.getElementById('durationPriceInfo').innerHTML = `Estimated Duration: ${duration}<br>Estimated Price: Rs. ${totalPrice}`;
+        document.getElementById('serviceType').disabled = false;
+        document.getElementById('bookingTime').disabled = false;
+      }
+    }
+
+    // Update Add-ons Visibility
+    function updateAddOnsVisibility() {
+      const service = document.getElementById('serviceType').value || '';
+      const addOns = ['deshedding', 'specialShampoo', 'nailClip', 'analGland', 'teethBrushing'];
+      addOns.forEach(addOn => {
+        const el = document.getElementById(addOn);
+        el.style.display = 'block';
+        if (service === 'fullGroom' && addOn === 'nailClip') el.style.display = 'none';
+        if ((service !== 'washDry' && service !== 'washTidy') && addOn === 'deshedding') el.style.display = 'none';
+      });
+      updateServiceDurationAndPrice();
+    }
+
+    // Load Time Slots Dynamically
+    function loadTimeSlots(date) {
+      fetch(`/get-time-slots/?date=${date}`, {
+        method: 'GET',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        return response.json();
+      })
+      .then(data => {
+        if (data.success) {
+          const timeSelect = document.getElementById('bookingTime');
+          timeSelect.innerHTML = '<option value="">Select Time</option>';
+          const weight = parseFloat(document.getElementById('petWeight1').value) || 0;
+          const size = weight < 5 ? 'XS' : weight <= 11 ? 'S' : weight <= 19 ? 'M' : weight <= 30 ? 'L' : 'Special';
+          const service = document.getElementById('serviceType').value || 'washDry';
+          const durations = {
+            washDry: { 'XS': 45, 'S': 60, 'M': 90, 'L': 120 },
+            washTidy: { 'XS': 45, 'S': 75, 'M': 90, 'L': 120 },
+            fullGroom: { 'XS': 90, 'S': 120, 'M': 150, 'L': 210 },
+            puppy: { 'XS': 90, 'S': 90, 'M': 90, 'L': 90 }
+          };
+          const minDuration = durations[service][size] || 45;
+          if (size === 'Special') {
+            timeSelect.disabled = true;
+          } else {
+            timeSelect.disabled = false;
+            data.time_slots.forEach(time => {
+              const [hours, minutes] = time.time.split(':').map(Number);
+              const totalMinutes = hours * 60 + minutes;
+              if (totalMinutes + minDuration <= 16 * 60) {
+                const option = document.createElement('option');
+                option.value = time.time;
+                option.textContent = time.display;
+                timeSelect.appendChild(option);
+              }
+            });
+          }
+        } else {
+          console.error('Failed to load time slots:', data.message);
+          document.getElementById('bookingTime').innerHTML = '<option value="">No slots available</option>';
+        }
+      })
+      .catch(error => {
+        console.error('Error loading time slots:', error);
+        document.getElementById('bookingTime').innerHTML = '<option value="">Error loading slots</option>';
+      });
+    }
+
+    // Date Change Handler
+    document.getElementById('bookingDate').addEventListener('change', function (e) {
+      const date = e.target.value;
+      if (date) {
+        loadTimeSlots(date);
+        checkTimeAvailability();
+      }
+    });
+
+    // Time Change Handler
+    document.getElementById('bookingTime').addEventListener('change', function () {
+      checkTimeAvailability();
+    });
+
+    // Check Time Availability
+    function checkTimeAvailability() {
+      const date = document.getElementById('bookingDate').value;
+      const time = document.getElementById('bookingTime').value;
+      const serviceType = document.getElementById('serviceType').value || 'washDry';
+      const weight = parseFloat(document.getElementById('petWeight1').value) || 0;
+      const size = weight < 5 ? 'XS' : weight <= 11 ? 'S' : weight <= 19 ? 'M' : weight <= 30 ? 'L' : 'Special';
+      const durations = {
+        washDry: { 'XS': 45, 'S': 60, 'M': 90, 'L': 120 },
+        washTidy: { 'XS': 45, 'S': 75, 'M': 90, 'L': 120 },
+        fullGroom: { 'XS': 90, 'S': 120, 'M': 150, 'L': 210 },
+        puppy: { 'XS': 90, 'S': 90, 'M': 90, 'L': 90 }
+      };
+      const duration = durations[serviceType][size] || 45;
+      const totalDuration = document.getElementById('deshedding').checked ? duration + 15 : duration;
+
+      if (date && time && size !== 'Special') {
+        const [hours, minutes] = time.split(':').map(Number);
+        const startMinutes = hours * 60 + minutes;
+        const endMinutes = startMinutes + totalDuration;
+
+        fetch(`/check-booking-availability/?date=${date}&start=${time}&duration=${totalDuration}`, {
+          method: 'GET',
+          headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            confirmButton.disabled = data.is_overlapping;
+            if (data.is_overlapping) {
+              confirmButton.classList.add('btn-danger');
+              confirmButton.classList.remove('btn-success');
+              confirmButton.textContent = 'Time Slot Unavailable';
+            } else {
+              confirmButton.classList.remove('btn-danger');
+              confirmButton.classList.add('btn-success');
+              confirmButton.textContent = 'Confirm Booking';
+            }
+          } else {
+            console.error('Availability check failed:', data.message);
+            confirmButton.disabled = true;
+          }
+        })
+        .catch(error => {
+          console.error('Error checking availability:', error);
+          confirmButton.disabled = true;
+        });
+      } else {
+        confirmButton.disabled = true;
+      }
+    }
+
+    // Form Validation
+    function validateStep1() {
+      const form = document.getElementById('bookingForm');
+      const step1Inputs = document.querySelectorAll('#step1 input[required]');
+      let isValid = true;
+      step1Inputs.forEach(input => {
+        if (!input.value.trim()) {
+          input.classList.add('is-invalid');
+          isValid = false;
+        } else if (input.id === 'contactNo' && !/^\+977[0-9]{10}$/.test(input.value)) {
+          input.classList.add('is-invalid');
+          isValid = false;
+        } else {
+          input.classList.remove('is-invalid');
+        }
+      });
+      return isValid;
+    }
+
+    function validateStep2() {
+      let valid = true;
+      for (let i = 1; i <= petCount; i++) {
+        const weight = document.getElementById(`petWeight${i}`);
+        if (!weight.value) {
+          valid = false;
+          weight.classList.add('is-invalid');
+        } else {
+          weight.classList.remove('is-invalid');
+        }
+      }
+      return valid;
+    }
+
+    function validateStep3() {
+      const serviceType = document.getElementById('serviceType');
+      const bookingDate = document.getElementById('bookingDate');
+      const bookingTime = document.getElementById('bookingTime');
+      let isValid = true;
+      let isValidTime = false;
+      if (!serviceType.value || serviceType.value === '') {
+        serviceType.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        serviceType.classList.remove('is-invalid');
+      }
+      if (!bookingDate.value || bookingDate.value === '') {
+        bookingDate.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        bookingDate.classList.remove('is-invalid');
+      }
+      if (bookingTime.value && bookingTime.value !== 'Select Time' && bookingTime.value !== 'Error loading slots' && bookingTime.value !== 'No slots available') {
+        const [timePart, period] = bookingTime.value.split(' ');
+        let [hours, minutes] = timePart.split(':').map(Number);
+        if (period === 'PM' && hours !== 12) hours += 12;
+        if (period === 'AM' && hours === 12) hours = 0;
+        const time24 = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+        isValidTime = time24 >= '09:00' && time24 <= '16:00';
+      }
+      if (!bookingTime.value || !isValidTime) {
+        bookingTime.classList.add('is-invalid');
+        isValid = false;
+      } else {
+        bookingTime.classList.remove('is-invalid');
+      }
+      return isValid && isValidTime;
+    }
+
+    function displayConfirmation() {
+      const formData = new FormData(document.getElementById('bookingForm'));
+      let details = '<h5 class="fw-bold text-primary">Booking Summary</h5><ul class="list-group">';
+      for (let [key, value] of formData.entries()) {
+        if (key.startsWith('pet')) continue;
+        if (key === 'add_ons') {
+          const addOns = formData.getAll('add_ons').join(', ');
+          details += `<li class="list-group-item">Add-ons: ${addOns || 'None'}</li>`;
+        } else if (key === 'date') {
+          const date = new Date(value).toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+          details += `<li class="list-group-item">Date: ${date}</li>`;
+        } else if (key === 'time') {
+          details += `<li class="list-group-item">Time: ${value}</li>`;
+        } else {
+          details += `<li class="list-group-item">${key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())}: ${value}</li>`;
+        }
+      }
+      for (let i = 1; i <= petCount; i++) {
+        details += `<li class="list-group-item">Pet ${i}: Name: ${formData.get(`petName${i}`) || ''}, Age: ${formData.get(`petAge${i}`) || ''}, Weight: ${formData.get(`petWeight${i}`) || ''}kg, Note: ${formData.get(`petNote${i}`) || ''}</li>`;
+      }
+      const weight = parseFloat(document.getElementById('petWeight1').value) || 0;
+      const size = weight < 5 ? 'XS' : weight <= 11 ? 'S' : weight <= 19 ? 'M' : weight <= 30 ? 'L' : 'Special';
+      const service = document.getElementById('serviceType').value || 'washDry';
+      const basePrices = {
+        washDry: { 'XS': 500, 'S': 1000, 'M': 1500, 'L': 2000 },
+        washTidy: { 'XS': 500, 'S': 1000, 'M': 1500, 'L': 2000 },
+        fullGroom: { 'XS': 1500, 'S': 2000, 'M': 2500, 'L': 3500 },
+        puppy: { 'XS': 1500, 'S': 1500, 'M': 1500, 'L': 1500 }
+      };
+      const addOnPrices = { deshedding: 200, specialShampoo: 200, nailClip: 200, analGland: 200, teethBrushing: 200 };
+      let totalPrice = basePrices[service][size] || 0;
+      const addOns = formData.getAll('add_ons');
+      addOns.forEach(addOn => totalPrice += addOnPrices[addOn] || 0);
+      details += `<li class="list-group-item"><strong>Total Price: Rs. ${totalPrice}</strong></li>`;
+      details += '</ul>';
+      document.getElementById('confirmationDetails').innerHTML = details;
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const terms = document.getElementById('terms');
+      if (!terms.checked) {
+        terms.classList.add('is-invalid');
+        return;
+      } else {
+        terms.classList.remove('is-invalid');
+      }
+
+      const formData = new FormData(this);
+      const data = {};
+      for (let [key, value] of formData.entries()) data[key] = value;
+      data.service_type = document.getElementById('serviceType').value; // Explicitly add service_type
+      data.pets = [];
+      for (let i = 1; i <= petCount; i++) {
+        data.pets.push({
+          name: data[`petName${i}`] || '',
+          age: data[`petAge${i}`] || '',
+          weight: parseFloat(data[`petWeight${i}`]) || 0,
+          note: data[`petNote${i}`] || ''
+        });
+        delete data[`petName${i}`];
+        delete data[`petAge${i}`];
+        delete data[`petWeight${i}`];
+        delete data[`petNote${i}`];
+      }
+      data.add_ons = formData.getAll('add_ons');
+      data.date_time = `${formData.get('date')} ${formData.get('time')}`;
+
+      fetch('/book-appointment/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          Swal.fire({
+            icon: 'success',
+            title: 'Booking Confirmed!',
+            text: 'Redirecting to My Bookings...',
+            timer: 2000,
+            showConfirmButton: false
+          }).then(() => {
+            window.location.href = '/my_bookings/';
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: result.message || 'Something went wrong.',
+          });
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    });
+
+    // Event listeners for dynamic updates
+    document.querySelectorAll('input[name="add_ons"]').forEach(addOn => {
+      addOn.addEventListener('change', updateServiceDurationAndPrice);
+    });
+    document.getElementById('serviceType').addEventListener('change', function () {
+      updateAddOnsVisibility();
+      updateServiceDurationAndPrice();
+    });
+    document.getElementById('petWeight1').addEventListener('input', function () {
+      loadTimeSlots(document.getElementById('bookingDate').value);
+      updateServiceDurationAndPrice();
+    });
+    document.getElementById('bookingDate').addEventListener('change', function (e) {
+      const date = e.target.value;
+      if (date) {
+        loadTimeSlots(date);
+      }
+    });
+
+    updateAddOnsVisibility();
+  });
+
+  document.querySelectorAll('.step').forEach(step => {
+    step.style.display = 'none';
+  });
+  document.querySelector('.step.active').style.display = 'block';
+</script>
+
+<style>
+  .step { display: none; }
+  .step.active { display: block; }
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #e75b1e 0%, #ff8c42 100%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .step-indicators {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  .step-indicators .step-indicator {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    cursor: default;
+  }
+  .step-indicators .step-indicator.active {
+    color: #e75b1e;
+    font-weight: 500;
+  }
+  .step-indicators .step-indicator::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 2px;
+    background: #dee2e6;
+    z-index: -1;
+  }
+  .step-indicators .step-indicator:first-child::before,
+  .step-indicators .step-indicator:last-child::before {
+    width: 50%;
+  }
+  .step-indicators .step-indicator.active::before {
+    background: #e75b1e;
+  }
+  .form-floating label { font-size: 0.9rem; }
+  .form-control:focus { border-color: #e75b1e; box-shadow: 0 0 0 0.2rem rgba(231, 91, 30, 0.25); }
+  @media (max-width: 768px) {
+    .modal-dialog { max-width: 90%; }
+    .row.g-3 > .col-md-6 { flex: 0 0 100%; max-width: 100%; }
+    h4 { font-size: 1.25rem; }
+    .step-indicators { font-size: 0.8rem; }
+  }
+  @media (max-width: 576px) {
+    .modal-dialog { max-width: 95%; }
+    .form-floating label { font-size: 0.85rem; }
+    .btn { font-size: 0.875rem; padding: 0.25rem 0.5rem; }
+  }
+</style>
+{% endblock content %}

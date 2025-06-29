@@ -1,0 +1,138 @@
+{% extends "base.html" %} 
+{% block content %} 
+{% load static %}
+<!-- Hero Section -->
+<section class="text-white" style="background: url('/static/images/dog-1.png') no-repeat center center/cover; min-height: 700px;">
+  <div class="container h-100 d-flex align-items-center" >
+    <div class="d-flex flex-column justify-content-center align-items-start text-start" style="margin-top: 15%;">
+      <h1 class="display-5 fw-bold text-dark">Everything Your Dog<br>Needs, All in One Place!</h1>
+      <p class="lead text-dark mt-3">
+        Nutritious food, cozy beds, grooming essentials,<br>
+        and fun toys—everything for a happy, healthy pet!
+      </p>
+      <a href="#" class="btn btn-outline-danger mt-3">Shop Now</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Categories -->
+<section class="py-4" style="background-color: #fff3ec;">
+  <div class="container">
+    <h4 class="fw-bold text-center text-danger">Dog-Specific Product Categories</h4>
+    <div class="text-center mb-3">
+      <a href="#" class="btn btn-link text-danger">All</a>
+      <a href="#" class="btn btn-link text-danger">Food</a>
+      <a href="#" class="btn btn-link text-danger">Toys</a>
+      <a href="#" class="btn btn-link text-danger">Beds</a>
+      <a href="#" class="btn btn-link text-danger">Grooming</a>
+      <a href="#" class="btn btn-link text-danger">Collars</a>
+      <a href="#" class="btn btn-link text-danger">Health</a>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-2.png' %}" class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Classic Cushion Beds</p>
+            <p class="text-muted">NPR 3700</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-3.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Pup Ice Strawberry Flavored Waffle Cones Dog Treat (6 pcs)</p>
+            <p class="text-muted">NPR 1912</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-4.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Fofos Flexy Ball Ultra Bounce Toy for Dogs (Yellow & Grey)</p>
+            <p class="text-muted">NPR 490</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-5.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Skarts Premium H Harness for Dogs (Midnight Blue)</p>
+            <p class="text-muted">NPR 1275</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-6.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Dermcare Natural Shampoo</p>
+            <p class="text-muted">NPR 1800</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-7.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Full Grooming Package (Bath, Haircut, Nails, Ears)</p>
+            <p class="text-muted">NPR 4999</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Repeated cards -->
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-5.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Skarts Premium H Harness for Dogs (Midnight Blue)</p>
+            <p class="text-muted">NPR 1275</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-9.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Dermcare Natural Shampoo</p>
+            <p class="text-muted">NPR 1800</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card">
+          <img src="{% static 'Images/dog-7.png' %}"  class="card-img-top">
+          <div class="card-body">
+            <p class="fw-bold mb-0 text-danger">Full Grooming Package (Bath, Haircut, Nails, Ears)</p>
+            <p class="text-muted">NPR 4999</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-4">
+      <a href="#" class="btn btn-outline-danger">Load More</a>
+    </div>
+  </div>
+</section>
+
+<!-- Dog Care Tips -->
+<section class="py-5" style="background-color: #fff0e0;">
+  <div class="container text-center">
+    <h5 class="text-danger fw-bold mb-2">4 dogs care tips</h5>
+    <p class="fw-semibold">While you are travelling</p>
+    <img src="{% static 'Images/dog-10.png' %}"  alt="Dog Care Tips" class="img-fluid mt-3">
+  </div>
+</section>
+
+
+{% endblock content%}

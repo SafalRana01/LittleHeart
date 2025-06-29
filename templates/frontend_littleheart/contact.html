@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+  <h2 class="text-center text-danger fw-bold mb-5">Contact Us</h2>
+
+  <div class="row">
+    <!-- Contact Info -->
+    <div class="col-md-6 mb-4">
+      <h4 class="text-danger fw-bold">Get In Touch</h4>
+      <p>
+        Whether you have a question about a product, need advice on pet care, or just want to share a story about your furry friend, we're here to listen and help. Please don’t hesitate to get in touch with us anytime.
+      </p>
+      <p>📞 Phone: +977-9876543210</p>
+      <p>📧 Email: littleheartpetshop@gmail.com</p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="col-md-6">
+      <h5 class="fw-bold text-danger">Contact Form</h5>
+      <form method="POST">
+        {% csrf_token %}
+        {% comment %} {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mb-3" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %} {% endcomment %}
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="{{ form.name.id_for_label }}" class="form-label fw-bold text-danger">Name</label>
+            {{ form.name }}
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="{{ form.email.id_for_label }}" class="form-label fw-bold text-danger">Email</label>
+            {{ form.email }}
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.phone.id_for_label }}" class="form-label fw-bold text-danger">Phone Number</label>
+          {{ form.phone }}
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.subject.id_for_label }}" class="form-label fw-bold text-danger">Subject</label>
+          {{ form.subject }}
+        </div>
+        <div class="mb-3">
+          <label for="{{ form.message.id_for_label }}" class="form-label fw-bold text-danger">Message</label>
+          {{ form.message }}
+        </div>
+        <button type="submit" class="btn btn-outline-danger">SUBMIT →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Map Section -->
+  <div class="w-100 bg-white py-5">
+    <h2 class="text-center text-danger fw-bold mb-3">Our Location</h2>
+    <div class="w-100">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.237565585373!2d83.9755903150459!3d28.248134382598972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x543edf32f8988942!2sBytesoft%20Nepal!5e0!3m2!1sen!2snp!4v1717582448487!5m2!1sen!2snp" 
+        width="100%" 
+        height="400" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- FAQ Section -->
+  <div id="faq-section" class="py-5 px-3" style="background-color: #fdf1ea; margin-top: 20px;">
+    <div class="container">
+      <h3 class="text-center fw-bold text-danger mb-3">FAQ</h3>
+      <p class="text-center text-muted mb-5">
+        We’re here for you every step of the way. Please reach out if you have any further questions via our contact form.
+      </p>
+
+      <div class="faq-wrapper">
+        <div class="mb-4 border-bottom pb-3">
+          <div class="d-flex justify-content-between align-items-center faq-question fw-bold text-danger fs-5" onclick="toggleFaq(this)">
+            <span>How do I place an order on your website?</span>
+            <span class="faq-icon fs-4">–</span>
+          </div>
+          <div class="faq-answer mt-2 text-muted" style="display: block;">
+            To place an order on our website: You can create an account or proceed as a guest. Add the desired pet products to your shopping cart. Review your cart to ensure accuracy. Proceed to checkout and enter your shipping address. Choose your preferred shipping method. Enter your payment information. Confirm your order details and complete the purchase. You will receive an email confirmation with order details and tracking information.
+          </div>
+        </div>
+
+        <div class="mb-4 border-bottom pb-3">
+          <div class="d-flex justify-content-between align-items-center faq-question fw-bold text-danger fs-5" onclick="toggleFaq(this)">
+            <span>What are your shipping options and estimated delivery times?</span>
+            <span class="faq-icon fs-4">+</span>
+          </div>
+          <div class="faq-answer mt-2 text-muted" style="display: none;">
+            We offer standard and express delivery across the country. Delivery typically takes 3–7 business days depending on your location.
+          </div>
+        </div>
+
+        <div class="mb-4 border-bottom pb-3">
+          <div class="d-flex justify-content-between align-items-center faq-question fw-bold text-danger fs-5" onclick="toggleFaq(this)">
+            <span>What is your return policy for pet products?</span>
+            <span class="faq-icon fs-4">+</span>
+          </div>
+          <div class="faq-answer mt-2 text-muted" style="display: none;">
+            You can return most items within 15 days of delivery in their original packaging. Returns are processed within 5 business days of receiving the product.
+          </div>
+        </div>
+
+        <div class="mb-4 border-bottom pb-3">
+          <div class="d-flex justify-content-between align-items-center faq-question fw-bold text-danger fs-5" onclick="toggleFaq(this)">
+            <span>Are your dog and cat bed covers removable?</span>
+            <span class="faq-icon fs-4">+</span>
+          </div>
+          <div class="faq-answer mt-2 text-muted" style="display: none;">
+            Yes, all our bed covers are removable and machine washable for your convenience.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleFaq(clicked) {
+    const allAnswers = document.querySelectorAll('.faq-answer');
+    const allIcons = document.querySelectorAll('.faq-icon');
+
+    allAnswers.forEach(ans => ans.style.display = 'none');
+    allIcons.forEach(icon => icon.innerHTML = '+');
+
+    const answer = clicked.nextElementSibling || clicked.parentElement.querySelector('.faq-answer');
+    const icon = clicked.querySelector('.faq-icon');
+
+    const isOpen = answer.style.display === 'block';
+    answer.style.display = isOpen ? 'none' : 'block';
+    icon.innerHTML = isOpen ? '+' : '–';
+  }
+</script>
+<style>
+  .faq-question {
+    cursor: pointer;
+  }
+
+  .faq-answer {
+    transition: all 0.3s ease;
+  }
+</style>
+{% endblock content %}

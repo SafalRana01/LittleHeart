@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+
+<!-- Fullscreen Hero Image -->
+<section class="hero-section" style="height: 100vh; width: 100vw; background-image: url('{% static "images/groom-1.png" %}'); background-size: cover; background-position: center; margin-bottom:-1px;"></section>
+
+<!-- Intro Paragraph Below Hero -->
+<section class="py-3" style="background-color: #FFF5F0;">
+  <div class="container">
+    <div class="text-center px-1 px-md-2">
+      <p class="text-dark" style="font-size: 20px; font-weight: 400; max-width: 1200px;">
+        <em>
+          At Little Heart Pet Shop, every grooming session is one-on-one—calm, caring, and tailored to your pet’s needs.
+          Whether it’s a quick tidy-up or a full makeover, I use gentle techniques and professional tools to keep your
+          pet looking and feeling their best.
+        </em>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Grooming Services -->
+<section class="bg-white text-center">
+  <div class="container">
+    <h4 class="fw-bold text-danger mb-4 mt-3" style="font-size: 32px;">Our Grooming Services</h4>
+    <div class="row g-4 justify-content-center">
+
+      <!-- Card 1 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 px-3 py-4 h-100 text-center" style="background-color: #F5AA65; border-radius: 20px;">
+          <img src="{% static 'images/hero-1.png' %}" alt="Wash & Dry" style="height: 150px;">
+          <h5 class="fw-bold mt-3 text-white"><strong>Wash & Dry</strong></h5>
+          <p class="mb-3" style="font-size: 16px; color: #fff; font-weight:700;">Small: Rs. 850 | Medium: Rs. 1000 | Large: Rs. 1500</p>
+          <div class="text-start" style="max-width: 180px; margin-left: -0.5px; margin-right: auto; color: white;">
+            <ul class="list-unstyled mb-0">
+              <li>✔ Warm Bath</li>
+              <li>✔ Blow Dry</li>
+              <li>✔ Brush & Comb</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-4">
+        <div class="card shadow-sm border-0 px-3 py-4 h-100 text-center" style="background-color: #F5AA65; border-radius: 20px;">
+          <img src="{% static 'images/hero-1.png' %}" alt="Wash & Dry" style="height: 150px;">
+          <h5 class="fw-bold mt-3 text-white"><strong>Wash & Tidy</strong></h5>
+          <p class="mb-3" style="font-size: 16px; color: #fff; font-weight:700;">Small: Rs. 850 | Medium: Rs. 1000 | Large: Rs. 1500</p>
+          <div class="text-start" style="max-width: 180px; margin-left: -0.5px; margin-right: auto; color: white;">
+            <ul class="list-unstyled mb-0">
+              <li>✔ Bath & Dry</li>
+              <li>✔ Face Trim</li>
+              <li>✔ Nail Trim</li>
+              <li>✔ Paw Tidy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+     <div class="col-md-4">
+        <div class="card shadow-sm border-0 px-3 py-4 h-100 text-center" style="background-color: #F5AA65; border-radius: 20px;">
+          <img src="{% static 'images/hero-1.png' %}" alt="Wash & Dry" style="height: 150px;">
+          <h5 class="fw-bold mt-3 text-white"><strong>Full Groom</strong></h5>
+          <p class="mb-3" style="font-size: 16px; color: #fff; font-weight:700;">Small: Rs. 850 | Medium: Rs. 1000 | Large: Rs. 1500</p>
+          <div class="text-start" style="max-width: 180px; margin-left: -0.5px; margin-right: auto; color: white;">
+            <ul class="list-unstyled mb-0">
+              <li>✔ Bath & blow dry</li>
+              <li>✔ Full-body haircut</li>
+              <li>✔ Nail trim</li>
+              <li>✔ Ear Care</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white text-center">
+    <!-- Additional Services -->
+    <div class="mt-5 px-4 py-4 rounded" style="background-color: #FFF5F0;">
+    <h4 class="fw-bold text-danger mb-4 mt-2" style="font-size: 32px;">Additional Services</h4>
+      <ul class="list-unstyled text-start mx-auto" style="max-width: 750px; font-size: 22px;">
+        <li><span class="text-success fw-bold">✔ De-shedding Treatment</span> – Removes loose undercoat for healthy skin</li>
+        <li><span class="text-success fw-bold">✔ Anal Gland Expression</span> – Safe, hygienic expression service</li>
+        <li><span class="text-success fw-bold">✔ Teeth Brushing</span> – Freshens breath & supports dental health</li>
+        <li><span class="text-success fw-bold">✔ Special Shampoo</span> – Options for sensitive skin, flea relief, whitening, etc.</li>
+      </ul>
+    </div>
+
+    <!-- Size Table -->
+     <!-- Size Table -->
+<h4 class="fw-bold text-danger mb-4 mt-5" style="font-size: 32px;">Size & Breed Categories</h4>
+<div class="d-flex justify-content-center">
+  <table class="table table-bordered text-center" style="max-width: 600px;">
+    <thead>
+      <tr>
+        <th style="background-color: #8A5E51; color: white;">Size</th>
+        <th style="background-color: #8A5E51; color: white;">Weight Guide (kg)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background-color: #F5EDE6;"><strong>XS</strong></td>
+        <td style="background-color: #F5EDE6;">Up to 5</td>
+      </tr>
+      <tr>
+        <td style="background-color: white;"><strong>S</strong></td>
+        <td style="background-color: white;">5 – 11</td>
+      </tr>
+      <tr>
+        <td style="background-color: #F5EDE6;"><strong>M</strong></td>
+        <td style="background-color: #F5EDE6;">12 – 19</td>
+      </tr>
+      <tr>
+        <td style="background-color: white;"><strong>L</strong></td>
+        <td style="background-color: white;">20 – 27</td>
+      </tr>
+      <tr>
+        <td style="background-color: #F5EDE6;"><strong>XL</strong></td>
+        <td style="background-color: #F5EDE6;">Above 27</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+   <!-- Booking Call to Action -->
+<div class="mt-5 mb-3 py-4 px-3 rounded" style="background-color: #ffe7e0;">
+  <h5 style="font-size: 30px; font-weight: 800; color: #D84315; margin-bottom: 2%;">
+    Ready to Book Your Pet’s Pampering?
+  </h5>
+  <p style="font-weight: 500; font-size:18px; margin-bottom: 2%;">
+    Appointments by request to provide one-on-one care.
+  </p>
+  <a href="#" class="btn" style="
+      background-color: #D48C77;
+      color: white;
+      font-weight: bold;
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.39);
+    ">
+    Book Now →
+  </a>
+</div>
+
+</section>
+
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %} 
+{% block content %} 
+{% load static %}
+<section class="text-white" style="background: url('/static/images/cat1.png') no-repeat center center/cover; height: 90vh;">
+  <div class="container d-flex flex-column justify-content-center align-items-start h-100">
+    <h1 class="display-5 fw-bold text-dark">Everything Your Cat<br>Needs, All in One Place!</h1>
+    <p class="lead text-dark mt-3">
+      Tasty meals, comfy beds, grooming care, and playful toys— <br>everything your cat loves in one place!
+    </p>
+    <a href="#" class="btn btn-outline-danger mt-3">Shop Now</a>
+  </div>
+</section>
+
+<section class="text-center py-5">
+  <h3 class="fw-bold" style="color: #e75b1e;">Cat-Specific Product Categories</h3>
+  <div class="mt-3">
+    <a href="#" class="me-3 text-decoration-none text-danger">All</a>
+    <a href="#" class="me-3 text-decoration-none text-dark">Food</a>
+    <a href="#" class="me-3 text-decoration-none text-dark">Toys</a>
+    <a href="#" class="me-3 text-decoration-none text-dark">Beds</a>
+    <a href="#" class="me-3 text-decoration-none text-dark">Grooming</a>
+    <a href="#" class="me-3 text-decoration-none text-dark">Collars</a>
+    <a href="#" class="text-decoration-none text-dark">Health</a>
+  </div>
+</section>
+
+<section class="container py-4">
+  <div class="row g-4">
+    <div class="col-md-4 text-center">
+      <img src="{% static 'Images/cat2.png' %}" class="img-fluid mb-2">
+      <p class="fw-bold mb-1">Cat Tree in Gray, Condo Scratcher, Climbing Furniture w/ Scratching Post</p>
+      <p>NPR 5999</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="{% static 'Images/cat3.png' %}" class="img-fluid mb-2">
+      <p class="fw-bold mb-1">Veko Radicate (Selamectin) Tick and Flea Control Spot On for Cats</p>
+      <p>NPR 599</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="{% static 'Images/cat4.png' %}"class="img-fluid mb-2">
+      <p class="fw-bold mb-1">Purina Felix Chicken with Jelly Adult Cat Wet Food (24x85g)</p>
+      <p>NPR 1792</p>
+    </div>
+
+    <div class="col-md-4 text-center">
+      <img src="{% static 'Images/cat5.png' %}"class="img-fluid mb-2">
+      <p class="fw-bold mb-1">Cat Collar Personalized Necklace Lovely Pet Gift Name Gift for Pet 100% leather</p>
+      <p>NPR 1275</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="{% static 'Images/cat6.png' %}" class="img-fluid mb-2">
+      <p class="fw-bold mb-1">Paw NutriDerm Replenishing Shampoo (200ml)</p>
+      <p>NPR 4750</p>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="{% static 'Images/cat7.png' %}" class="img-fluid mb-2">
+      <p class="fw-bold mb-1">Full Grooming Package (Bath, Haircut, Nails, Ears)</p>
+      <p>NPR 4999</p>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-outline-danger">Load More</button>
+  </div>
+</section>
+
+<section class="py-5" style="background-color: #fff2e9;">
+  <div class="container text-center">
+    <h5 class="fw-bold text-danger">6 cats care tips</h5>
+    <p class="mb-4">That will ensure their joy and well-being.</p>
+    <img src="{% static 'Images/cat8.png' %}" alt="6 cat care tips" class="img-fluid">
+  </div>
+</section>
+
+
+{% endblock content%}
